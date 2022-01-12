@@ -35,7 +35,6 @@ class SongDetail(APIView):
             filepath = (f"musiclibrary\media\{song.album_art.name}")
             im = Image.open(filepath)
             im.show()
-            print(im.format, im.size, im.mode)
                     
         return Response(serializer.data)
 
