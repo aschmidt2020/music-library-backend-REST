@@ -5,6 +5,7 @@ from .serializers import SongSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import serializers, status
+from PIL import Image
 
 # Create your views here.
 class SongList(APIView):
@@ -30,6 +31,12 @@ class SongDetail(APIView):
     def get(self, request, pk):
         song = self.get_object(pk)
         serializer = SongSerializer(song)
+        if song.album_art.name is not None:
+            filepath = (f"musiclibrary\media\{song.album_art.name}")
+            im = Image.open(filepath)
+            im.show()
+            print(im.format, im.size, im.mode)
+                    
         return Response(serializer.data)
 
     def put(self, request, pk):
