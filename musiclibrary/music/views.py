@@ -34,6 +34,7 @@ class SongDetail(APIView):
         if song.album_art.name is not None:
             filepath = (f"musiclibrary\media\{song.album_art.name}")
             im = Image.open(filepath)
+            print(im)
             im.show()
                     
         return Response(serializer.data)
