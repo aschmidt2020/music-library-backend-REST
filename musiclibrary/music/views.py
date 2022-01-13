@@ -32,7 +32,7 @@ class SongDetail(APIView):
         song = self.get_object(pk)
         serializer = SongSerializer(song)
         if song.album_art.name is not None:
-            filepath = (f"musiclibrary\media\{song.album_art.name}")
+            filepath = (f"{song.album_art.name}")
             im = Image.open(filepath)
             print(im)
             im.show()
